@@ -1,0 +1,14 @@
+{
+  "name": "caret",
+  "repo": "component/caret",
+  "description": "render selection carets over arbtitrary dom elements",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
