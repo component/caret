@@ -11,7 +11,26 @@
 
 ## API
 
-  TBD
+### `var c = caret(target);`
+
+Creates a caret for element `target`. 
+
+### `c.start(position)`
+
+Set start position of the caret to `position` (`Number`).
+
+### `c.end(position)`
+
+Set end position of the caret to `position` (`Number`).
+
+
+### `c.render()`
+
+Measures the element content, and renders the caret according to the start and end positions.
+
+### `c.el()`
+
+Returns the caret's `HTMLElement`.
 
 ## License
 
