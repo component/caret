@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <title>Caret Test</title>
 <script src="build/build.js"></script>
+<style>
+  .caret * {
+    background: red;
+    opacity: 0.1;
+  }
+</style>
 <div id="target">Lorem ipsum dolor sit amet, consectetur <b>adipisicing</b> elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea <u>commodo
@@ -9,30 +15,31 @@ cillum dolore eu fugiat nulla pariatur. <i>Excepteur sint occaecat</i> cupidatat
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 <div id="overlay"></div>
 <script>
-var Caret = require('caret');
+var caret = require('caret');
 
-var el = document.getElementById('target');
+var target = document.getElementById('target');
 var overlay = document.getElementById('overlay');
 var carets = [];
 
 for (var i = 0; i < 10; i++) {
   var start = Math.floor(Math.random() * 700);
   var length = Math.floor(Math.random() * 20) + 10;
-  var caret = new Caret(el, start, start + length, overlay);
-  caret.color = "rgba(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ", 0.2)"; 
-  carets.push(caret);
+  var c = caret(target);
+  c.start(Math.floor(Math.random() * 300));
+  c.end(Math.floor(Math.random() * 300));
+  carets.push(c);
+  overlay.appendChild(c._el);
 }
 
-el.contentEditable = true;
+target.contentEditable = true;
 
 function update() {
-  overlay.innerHTML = '';
   for (var i = 0; i < carets.length; i++) {
     carets[i].render();
   }
 }
 
-el.addEventListener('input', update, false)
+target.addEventListener('input', update, false)
 
 update();
 
